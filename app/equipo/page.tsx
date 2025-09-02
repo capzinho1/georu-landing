@@ -148,7 +148,7 @@ export default function EquipoPage() {
           <div className="text-center">
             <p className="text-white text-lg font-semibold mb-2">Nicolás Muñoz-Jose Concha</p>
             <p className="text-gray-400">Proyecto de Título – INACAP</p>
-            <p className="text-gray-500 text-sm mt-4">© 2024 GeoRu. Todos los derechos reservados.</p>
+            <p className="text-gray-500 text-sm mt-4">© 2025 GeoRu. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
