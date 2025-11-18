@@ -5,3 +5,39 @@
 html {
   scroll-behavior: smooth;
 }
+
+@layer utilities {
+  .backdrop-blur-xl {
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+  }
+  
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+  }
+  
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(60px) saturate(200%);
+    -webkit-backdrop-filter: blur(60px) saturate(200%);
+  }
+}
+
+/* Liquid Glass Effects - iPhone Style */
+@layer components {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  }
+  
+  .glass-effect-strong {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(60px) saturate(200%);
+    -webkit-backdrop-filter: blur(60px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  }
+}
