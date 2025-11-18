@@ -18,25 +18,25 @@ export default function ContactoPage() {
     <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-cyan-50 to-emerald-100">
       {/* Header with Liquid Glass Effect */}
       <header 
-        className="sticky top-0 z-50 border-b border-white/40 shadow-lg"
+        className="sticky top-0 z-50 border-b border-white/30 shadow-lg"
         style={{
-          background: 'rgba(255, 255, 255, 0.75)',
-          backdropFilter: 'blur(40px) saturate(200%)',
-          WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-          boxShadow: '0 4px 16px 0 rgba(31, 38, 135, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.6)',
+          background: 'rgba(255, 255, 255, 0.4)',
+          backdropFilter: 'blur(80px) saturate(300%)',
+          WebkitBackdropFilter: 'blur(80px) saturate(300%)',
+          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 0 rgba(255, 255, 255, 0.2)',
         }}
       >
-        <div className="container mx-auto px-4">
-          <div className="relative flex items-center justify-center py-4">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="relative flex items-center justify-center py-3 md:py-4 min-h-[48px] md:min-h-0">
             {/* Navigation - Centered */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <a href="/" className="text-gray-700 hover:text-emerald-600 transition duration-300 font-medium whitespace-nowrap">
+            <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
+              <a href="/" className="text-gray-700 hover:text-emerald-600 transition duration-300 font-medium whitespace-nowrap text-sm lg:text-base">
                 Inicio
               </a>
-              <a href="/equipo" className="text-gray-700 hover:text-emerald-600 transition duration-300 font-medium whitespace-nowrap">
+              <a href="/equipo" className="text-gray-700 hover:text-emerald-600 transition duration-300 font-medium whitespace-nowrap text-sm lg:text-base">
                 Equipo
               </a>
-              <a href="/contacto" className="text-emerald-600 font-medium whitespace-nowrap">
+              <a href="/contacto" className="text-emerald-600 font-medium whitespace-nowrap text-sm lg:text-base">
                 Contacto
               </a>
             </nav>
@@ -44,7 +44,9 @@ export default function ContactoPage() {
             {/* Mobile Menu Button */}
             <button 
               onClick={toggleMobileMenu}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition duration-300 absolute right-0"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100/80 active:bg-gray-200/80 transition duration-200 absolute right-4 z-10"
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,37 +62,45 @@ export default function ContactoPage() {
         </div>
       </header>
 
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-30 top-[57px]"
+          onClick={closeMobileMenu}
+        />
+      )}
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div 
-          className="md:hidden border-b border-white/40 shadow-lg"
+          className="md:hidden fixed inset-x-0 top-[57px] z-40 border-b border-white/30 shadow-lg"
           style={{
-            background: 'rgba(255, 255, 255, 0.85)',
-            backdropFilter: 'blur(40px) saturate(200%)',
-            WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-            boxShadow: '0 4px 16px 0 rgba(31, 38, 135, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.6)',
+            background: 'rgba(255, 255, 255, 0.5)',
+            backdropFilter: 'blur(80px) saturate(300%)',
+            WebkitBackdropFilter: 'blur(80px) saturate(300%)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 0 rgba(255, 255, 255, 0.2)',
           }}
         >
           <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-3">
               <a 
                 href="/" 
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-emerald-600 transition duration-300 font-medium py-2"
+                className="text-gray-700 hover:text-emerald-600 active:text-emerald-700 transition duration-200 font-medium py-2 px-2 rounded-lg hover:bg-gray-50"
               >
                 Inicio
               </a>
               <a 
                 href="/equipo" 
                 onClick={closeMobileMenu}
-                className="text-gray-700 hover:text-emerald-600 transition duration-300 font-medium py-2"
+                className="text-gray-700 hover:text-emerald-600 active:text-emerald-700 transition duration-200 font-medium py-2 px-2 rounded-lg hover:bg-gray-50"
               >
                 Equipo
               </a>
               <a 
                 href="/contacto" 
                 onClick={closeMobileMenu}
-                className="text-emerald-600 font-medium py-2"
+                className="text-emerald-600 font-medium py-2 px-2 rounded-lg hover:bg-gray-50"
               >
                 Contacto
               </a>
@@ -112,10 +122,10 @@ export default function ContactoPage() {
       </section>
 
       {/* Contacto Section */}
-      <section className="relative bg-white/50 backdrop-blur-sm py-16 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-white/50 backdrop-blur-sm py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
               <GlassCard variant="default" className="p-6 md:p-8">
                 <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4 md:mb-6">Información del Proyecto</h3>
                 <div className="space-y-4">

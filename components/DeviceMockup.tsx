@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 interface DeviceMockupProps {
   device: 'iphone' | 'macbook'
@@ -36,12 +37,12 @@ export function DeviceMockup({ device, imageSrc, className }: DeviceMockupProps)
     if (imageDimensions) {
       const imageAspectRatio = imageDimensions.width / imageDimensions.height
       
-      // Escalar basado en el ancho de la imagen, con límites razonables
+      // Escalar basado en el ancho de la imagen, con límites responsivos
       const baseScale = 0.35 // Factor de escala para ajustar el tamaño
       const maxWidth = 500
-      const minWidth = 250
+      const minWidth = 200 // Reducido para móvil
       const maxHeight = 1000
-      const minHeight = 500
+      const minHeight = 400 // Reducido para móvil
       
       // Calcular dimensiones basadas en la imagen
       const calculatedWidth = imageDimensions.width * baseScale
@@ -60,13 +61,14 @@ export function DeviceMockup({ device, imageSrc, className }: DeviceMockupProps)
     }
 
     return (
-      <div className={className}>
+      <div className={cn("w-full flex justify-center", className)}>
         <div 
           className="relative mx-auto"
           style={{ 
             width: `${mockupWidth}px`, 
             height: `${mockupHeight}px`,
-            maxWidth: '100%'
+            maxWidth: 'min(100%, 500px)',
+            maxHeight: '100vh'
           }}
         >
           {/* iPhone Frame */}
